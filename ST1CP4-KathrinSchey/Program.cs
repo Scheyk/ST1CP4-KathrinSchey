@@ -76,7 +76,7 @@ namespace ST1CP4_KathrinSchey
                     }
                 } // <--- end
 
-            } else // <--- user chill. user enterd 2 or 3. so he is relax.
+            } else // <--- user chill. user enter 2 or 3.
             {
                 Console.WriteLine("Woud you like to order some food? (1- yes please! | 2- not yet, yust wanted to chat)");
                 var orderFood = Convert.ToInt32(Console.ReadLine());
@@ -123,10 +123,11 @@ namespace ST1CP4_KathrinSchey
             }
 
             if (askDrink == 1) // <--- if drink no
-            {
-                chooseDrink = "no Drink";
+            {                
                 // call the method "WhatTime"(is in TheMethod class. start: line 78)
-                timeDelivery = objTheMethods.WhatTime("deliveryTime"); 
+                timeDelivery = objTheMethods.WhatTime("deliveryTime");
+
+                chooseDrink = "no Drink";
 
             } else  // <--- if drink yes
             {
@@ -141,6 +142,7 @@ namespace ST1CP4_KathrinSchey
             pay = objTheMethods.PaymentSystem("thePayment"); 
 
             // start with the personal question
+
             while(name == "Mr. sirius" || name == "")
             {
                 Console.WriteLine("for order, please enter your correct name");
@@ -149,6 +151,7 @@ namespace ST1CP4_KathrinSchey
 
             Console.WriteLine("Now, we need your adress and phone number \n");
 
+            // street name
             Console.WriteLine("At first, your street");
             string street = Console.ReadLine();
             while(street == "")
@@ -157,34 +160,62 @@ namespace ST1CP4_KathrinSchey
                 street = Console.ReadLine();
             }
 
+            // house number
             Console.WriteLine("now, the haus number");
-            var housNumber = Convert.ToInt32(Console.ReadLine());            
-            Console.WriteLine("your door number");
-            var doorNumber = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("please, enter your plz");
-            var plz = Convert.ToInt32(Console.ReadLine());
+            string housNumber = Console.ReadLine();
+            while (housNumber == "")
+            {
+                Console.WriteLine("your hous number,please");
+                housNumber = Console.ReadLine();
+            }
 
+            // door number
+            Console.WriteLine("your door number");
+            string doorNumber = Console.ReadLine();
+            while (doorNumber == "")
+            {
+                Console.WriteLine("your door number,please");
+                doorNumber = Console.ReadLine();
+            }
+
+            // district
+            Console.WriteLine("please, enter your district");
+            string plz = Console.ReadLine();
+            while (plz == "")
+            {
+                Console.WriteLine("please, enter your district");
+                plz = Console.ReadLine();
+            }
+
+            // place
             Console.WriteLine("and your place");
             string place = Console.ReadLine();
             while (place == "")
             {
-                Console.WriteLine("please, fill out the street");
+                Console.WriteLine("we need your place");
                 place = Console.ReadLine();
             }
 
-            Console.WriteLine("at last, your phone number please. (without special character)");
-            var phoneNumber = Convert.ToInt32(Console.ReadLine());
+            // phone number
+            Console.WriteLine("at last, your phone number please.");
+            string phoneNumber = Console.ReadLine();
+            while (phoneNumber == "")
+            {
+                Console.WriteLine("sorry,we need your number.");
+                phoneNumber = Console.ReadLine();
+            }
+            Console.WriteLine("");
             // end with the personal question
-            Console.WriteLine("------------------------------------------------------------------------------- \n");
-            
+
             // show the order details
+            Console.WriteLine("------------------------------------------------------------------------------- \n");
             Console.WriteLine($"Hi {name}, we are glad to show you the details of your order:");
             Console.WriteLine($"Your pizza: {typPizza}, pizza size: {printSize}, your choosen drink: {chooseDrink}");
             Console.WriteLine($"The method to pay you wish is: {pay}");
             Console.WriteLine($"The delivery time is: {timeDelivery}");
             Console.WriteLine($"The adress you us give is: \n");
-            Console.WriteLine($"Street: {street} \nHousenumber: {housNumber}");
-            Console.WriteLine($"plz: {plz}, city: {place}");
+            Console.WriteLine($"Street: {street} \nHousenumber: {housNumber} \nDoor number: {doorNumber}");
+            Console.WriteLine($"District: {plz}, city: {place}");
             Console.WriteLine($"Your phonenumber is: {phoneNumber} \n");
             Console.WriteLine($"Thank's {name} for ordering! We call ya 5 min prior to arrival. Grazie mille!! \n");
             Console.WriteLine("-------------------------------------------------------------------------------");

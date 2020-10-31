@@ -117,8 +117,8 @@ namespace ST1CP4_KathrinSchey
 
             while (askDrink < 1 || askDrink > 2)
             {
-                Console.WriteLine("only this 3 options \ntry again");
-                Console.WriteLine("1- small | 2- big | 3- family");
+                Console.WriteLine("only this 2 options \ntry again");
+                Console.WriteLine("1- no | 2- yes");
                 askDrink = Convert.ToInt32(Console.ReadLine());
             }
 

@@ -9,26 +9,19 @@ namespace ST1CP4_KathrinSchey
 {
     class Program
     {
-        // ################################################# global var
+        // global var
         public static string pay;
         public static string chooseDrink;
         public static string typPizza;
-        //public static string street;
-        //public static int housNumber;
-        //public static int doorNumber;
-        //public static int plz;
-        //public static string place;
-        //public static int phoneNumber;
-        //public static string name;
         public static string timeDelivery;
 
+        // enum for pizza size
         enum SizePizza
         {
             small = 1,
             big,
             family
         }
-
        
         static void Main(string[] args)
         { 
@@ -41,6 +34,9 @@ namespace ST1CP4_KathrinSchey
                 Console.WriteLine("Ok. Wish you a nice day!");
                 System.Environment.Exit(0);
             }
+
+            if (name == "")
+                name = "Mr. sirius";
             
             Console.WriteLine($"Hello {name}! Welcome in our Casa Roma Trattoria! \n How are you today? (1- busy, but ok :) | 2- pretty good, thanks | 3- never been better :D )");
             var how = Convert.ToInt32(Console.ReadLine());
@@ -117,12 +113,21 @@ namespace ST1CP4_KathrinSchey
             {
                 TheMethods objChoosenDrinks = new TheMethods();                
                 chooseDrink = objChoosenDrinks.ChooseDrinks("theDrink"); // <--- call the method "ChooseDrinks"(is in TheMethod class. start: line 44)
+
+                TheMethods objWhatTime = new TheMethods();
+                timeDelivery = objWhatTime.WhatTime("deliveryTime"); // <--- call the method "WhatTime"(is in TheMethod class. start: line 78)
             }
 
             TheMethods objPay = new TheMethods();
             pay = objPay.PaymentSystem("thePayment"); // <--- call the method "PaymentSystem"(is in TheMethod class. start: line 86)
 
             // start with the personal question
+            if(name == "Mr. sirius")
+            {
+                Console.WriteLine("for order, please enter your correct name");
+                name = Console.ReadLine();
+            }
+
             Console.WriteLine("Now, we need your adress and phone number \n");
             Console.WriteLine("At first, your street");
             string street = Console.ReadLine();
@@ -147,8 +152,8 @@ namespace ST1CP4_KathrinSchey
             Console.WriteLine($"Street: {street} \nHousenumber: {housNumber}");
             Console.WriteLine($"plz: {plz}, city: {place}");
             Console.WriteLine($"Your phonenumber is: {phoneNumber} \n");
-            Console.WriteLine($"Thank you {name} for ordering! We call ya 5 min prior to arrival. Grazie mille!! \n");
-            Console.WriteLine("------------------------------------------------------------------------------- \n");
+            Console.WriteLine($"Thank's {name} for ordering! We call ya 5 min prior to arrival. Grazie mille!! \n");
+            Console.WriteLine("-------------------------------------------------------------------------------");
 
         }
     }

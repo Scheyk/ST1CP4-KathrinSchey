@@ -45,12 +45,29 @@ namespace ST1CP4_KathrinSchey
         public string ChooseDrinks(string choosenDrink)  
         {
             Regex regex = new Regex(@"^\d+$");
-            
-            Console.WriteLine("What drink you whana choose?");
-           
-            Drinks();
 
-            choosenDrink = Console.ReadLine(); // <---- chooseDrink = global variable 
+            try
+            {
+                Console.WriteLine("What drink you whana choose?");
+
+                Drinks();
+
+                choosenDrink = Console.ReadLine(); // <---- chooseDrink = global variable
+
+                if (regex.IsMatch(choosenDrink))
+                {
+                    var newChoosNumber = Int32.Parse(choosenDrink);
+                    if (newChoosNumber < 1 || newChoosNumber > 3) throw new Exception("only from 1 to 3");
+                }
+                else
+                {
+                    throw new Exception("What u entered is a string, not a number, try again");                    
+                }
+            }
+            catch (Exception info)
+            {
+                Console.WriteLine(info);
+            }
 
             if (choosenDrink == "1")
                 choosenDrink = "juce";

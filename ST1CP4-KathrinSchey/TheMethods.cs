@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Reflection.Metadata;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace ST1CP4_KathrinSchey
@@ -10,7 +7,7 @@ namespace ST1CP4_KathrinSchey
     class TheMethods
     {
 
-        // use on lines 58, 71, 90
+        // use on lines 58, 69, 88
         public string TypeOfPizza(string pizza)  
         {
             Regex regex = new Regex(@"^\d+$");
@@ -55,7 +52,7 @@ namespace ST1CP4_KathrinSchey
             return pizza;
         }
 
-        // for the drinks. use on line 118 in the programm.cs
+        // for the drinks. use on line 135 in the programm.cs
         public string ChooseDrinks(string choosenDrink)  
         {
             Regex regex = new Regex(@"^\d+$");
@@ -111,7 +108,7 @@ namespace ST1CP4_KathrinSchey
            
         }
 
-        //  use on line 113 in the programm.cs
+        //  use on line 138, 128 in the programm.cs
         public string WhatTime(string delivery)  
         {
             Regex regex = new Regex(@"^\d+$");
@@ -152,7 +149,7 @@ namespace ST1CP4_KathrinSchey
             return delivery;
         }
 
-        // for the pay methods. use on line 122 in the programm.cs
+        // for the pay methods. use on line 142 in the programm.cs
         public string PaymentSystem(string choosePay) 
         {
             Regex regex = new Regex(@"^\d+$");
@@ -193,6 +190,5 @@ namespace ST1CP4_KathrinSchey
 
             return choosePay;
         }
-
     }
 }

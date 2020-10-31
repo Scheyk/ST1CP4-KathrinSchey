@@ -179,20 +179,20 @@ namespace ST1CP4_KathrinSchey
             }
 
             // district
-            Console.WriteLine("please, enter your district");
+            Console.WriteLine("please, enter your post code");
             string plz = Console.ReadLine();
             while (plz == "")
             {
-                Console.WriteLine("please, enter your district");
+                Console.WriteLine("please, enter your post code");
                 plz = Console.ReadLine();
             }
 
             // place
-            Console.WriteLine("and your place");
+            Console.WriteLine("and your city");
             string place = Console.ReadLine();
             while (place == "")
             {
-                Console.WriteLine("we need your place");
+                Console.WriteLine("we need your city");
                 place = Console.ReadLine();
             }
 
@@ -208,14 +208,20 @@ namespace ST1CP4_KathrinSchey
             // end with the personal question
 
             // show the order details
+            int today = DateTime.Today.Day;
+            int month = DateTime.Today.Month;
+            int year = DateTime.Today.Year;
+            var CurDate = DateTime.Now;
+            var hour = CurDate.Hour;
+            var min = CurDate.Minute;
             Console.WriteLine("------------------------------------------------------------------------------- \n");
-            Console.WriteLine($"Hi {name}, we are glad to show you the details of your order:");
+            Console.WriteLine($"Hi {name}, we are glad to show you the details of your order from {today} {month} {year}. Time: {hour}:{min}");
             Console.WriteLine($"Your pizza: {typPizza}, pizza size: {printSize}, your choosen drink: {chooseDrink}");
             Console.WriteLine($"The method to pay you wish is: {pay}");
-            Console.WriteLine($"The delivery time is: {timeDelivery}");
-            Console.WriteLine($"The adress you us give is: \n");
-            Console.WriteLine($"Street: {street} \nHousenumber: {housNumber} \nDoor number: {doorNumber}");
-            Console.WriteLine($"District: {plz}, city: {place}");
+            Console.WriteLine($"The delivery time is: {timeDelivery} \n");
+            Console.WriteLine($"Your stored address: \n");
+            Console.WriteLine($"Street: {street} \nHouse number: {housNumber} \nDoor number: {doorNumber}");
+            Console.WriteLine($"Post Code: {plz}, city: {place}");
             Console.WriteLine($"Your phonenumber is: {phoneNumber} \n");
             Console.WriteLine($"Thank's {name} for ordering! We call ya 5 min prior to arrival. Grazie mille!! \n");
             Console.WriteLine("-------------------------------------------------------------------------------");

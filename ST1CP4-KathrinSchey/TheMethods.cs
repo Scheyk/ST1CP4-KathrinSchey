@@ -24,39 +24,34 @@ namespace ST1CP4_KathrinSchey
                 if (regex.IsMatch(pizza))
                 {
                     var newPizza = Int32.Parse(pizza);
-                    if (newPizza < 1 || newPizza > 5) throw new Exception("we have only the five pizzen...");
+                    if (newPizza < 1 || newPizza > 5)
+                    {
+                        Console.WriteLine("we have only the five pizzen...");
+                        TypeOfPizza("newStart");
+                    } 
                 }
                 else
                 {
-                    throw new Exception("You entered a string. not a number.");
+                    Console.WriteLine("entered a string. not a number.");
+                    TypeOfPizza("newStart");
                 }
 
-                switch (pizza)
-                {
-                    case "1":
-                        pizza = "Margherita";
-                        break;
-                    case "2":
-                        pizza = "quattro formaggi";
-                        break;
-                    case "3":
-                        pizza = "tonno";
-                        break;
-                    case "4":
-                        pizza = "diavolo";
-                        break;
-                    case "5":
-                        pizza = "romana";
-                        break;
-                    default:
-                        pizza = "something goes wrong";
-                        break;
-                }
+                if(pizza == "1")
+                    pizza = "Margherita";
+                else if(pizza == "2")
+                    pizza = "quattro formaggi";
+                else if(pizza == "3")
+                    pizza = "tonno";
+                else if(pizza == "4")
+                    pizza = "diavolo";
+                else 
+                    pizza = "romana";
 
             } catch(Exception info)
             {
                 Console.WriteLine(info);
             }
+
             return pizza;
         }
 
@@ -76,11 +71,16 @@ namespace ST1CP4_KathrinSchey
                 if (regex.IsMatch(choosenDrink))
                 {
                     var newChoosNumber = Int32.Parse(choosenDrink);
-                    if (newChoosNumber < 1 || newChoosNumber > 3) throw new Exception("only from 1 to 3");
+                    if (newChoosNumber < 1 || newChoosNumber > 3)
+                    {
+                        Console.WriteLine("only from 1 to 3");
+                        ChooseDrinks("startNew");
+                    } 
                 }
                 else
                 {
-                    throw new Exception("What u entered is a string, not a number, try again");                    
+                    Console.WriteLine("What u entered is a string, not a number, try again");
+                    ChooseDrinks("startNew");
                 }
 
                 if (choosenDrink == "1")
@@ -108,8 +108,6 @@ namespace ST1CP4_KathrinSchey
             {
                 Console.Write(drinks[i] + " ");
             }
-
-
            
         }
 
@@ -127,24 +125,30 @@ namespace ST1CP4_KathrinSchey
                 if (regex.IsMatch(delivery))
                 {
                     var newDelivery = Int32.Parse(delivery);
-                    if (newDelivery < 1 || newDelivery > 3) throw new Exception("we have not more options. sorry");
+                    if (newDelivery < 1 || newDelivery > 3)
+                    {
+                        Console.WriteLine("we have no more options. try again");
+                        WhatTime("startAgain");
+                    }
+                    
                 } else
                 {
-                    Console.WriteLine("you entered a string");
+                    Console.WriteLine("you entered a string. please enter a number between 1 and 3");
+                    WhatTime("startAgain");
                 }
 
                 if (delivery == "1")
-                    delivery = "1 hour";
+                    delivery = "around 1 hour";
                 else if (delivery == "2")
-                    delivery = "2 hour";
+                    delivery = "around 2 hour";
                 else
-                    delivery = "so fast we can";
+                    delivery = "so fast we can- cause you are verry hungry.";
 
             } catch(Exception info)
             {
                 Console.WriteLine(info);
             }
-           
+
             return delivery;
         }
 
@@ -162,10 +166,15 @@ namespace ST1CP4_KathrinSchey
                 if (regex.IsMatch(choosePay))
                 {
                     var newPay = Int32.Parse(choosePay);
-                    if (newPay < 1 || newPay > 4) throw new Exception("We have only this 4 methods");
+                    if (newPay < 1 || newPay > 4)
+                    {
+                        Console.WriteLine("We have only this 4 methods. try again");
+                        PaymentSystem("startAgain");
+                    } 
                 } else
                 {
-                    Console.WriteLine("You entered a string. Not a number");
+                    Console.WriteLine("you entered a string. please enter a number between 1 and 4");
+                    PaymentSystem("startAgain");
                 }
 
                 if (choosePay == "1")

@@ -4,6 +4,7 @@ using System.Collections;
 using System.Security.Cryptography.X509Certificates;
 using static System.Net.Mime.MediaTypeNames;
 using System.Net.Http.Headers;
+using System.Text.RegularExpressions;
 
 namespace ST1CP4_KathrinSchey
 {
@@ -94,15 +95,32 @@ namespace ST1CP4_KathrinSchey
 
             }
 
+            //string pattern = @"^\w+$";
+            //Regex regex = new Regex(pattern);
+
             // ask pizza size
             Console.WriteLine("What size?");
             Console.WriteLine("1- small | 2- big | 3- family");
             var pizzaSize = Convert.ToInt32(Console.ReadLine());
+            while (pizzaSize < 1 || pizzaSize > 3)
+            {
+                Console.WriteLine("only this 3 options \ntry again");
+                Console.WriteLine("1- small | 2- big | 3- family");
+                pizzaSize = Convert.ToInt32(Console.ReadLine());
+            }
+            
             var printSize = (SizePizza)pizzaSize;
 
             // ask drinks
             Console.WriteLine("Woud you like to add some drinks to your order? (1- no, thanks | 2- yes please)");
             var askDrink = Convert.ToInt32(Console.ReadLine());
+
+            while (askDrink < 1 || askDrink > 2)
+            {
+                Console.WriteLine("only this 3 options \ntry again");
+                Console.WriteLine("1- small | 2- big | 3- family");
+                askDrink = Convert.ToInt32(Console.ReadLine());
+            }
 
             if (askDrink == 1) // <--- if drink no
             {
@@ -123,23 +141,37 @@ namespace ST1CP4_KathrinSchey
             pay = objTheMethods.PaymentSystem("thePayment"); 
 
             // start with the personal question
-            if(name == "Mr. sirius")
+            while(name == "Mr. sirius" || name == "")
             {
                 Console.WriteLine("for order, please enter your correct name");
                 name = Console.ReadLine();
             }
 
             Console.WriteLine("Now, we need your adress and phone number \n");
+
             Console.WriteLine("At first, your street");
             string street = Console.ReadLine();
+            while(street == "")
+            {
+                Console.WriteLine("please, fill out the street");
+                street = Console.ReadLine();
+            }
+
             Console.WriteLine("now, the haus number");
-            var housNumber = Convert.ToInt32(Console.ReadLine());
+            var housNumber = Convert.ToInt32(Console.ReadLine());            
             Console.WriteLine("your door number");
             var doorNumber = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("please, enter your plz");
             var plz = Convert.ToInt32(Console.ReadLine());
+
             Console.WriteLine("and your place");
             string place = Console.ReadLine();
+            while (place == "")
+            {
+                Console.WriteLine("please, fill out the street");
+                place = Console.ReadLine();
+            }
+
             Console.WriteLine("at last, your phone number please. (without special character)");
             var phoneNumber = Convert.ToInt32(Console.ReadLine());
             // end with the personal question
@@ -149,6 +181,7 @@ namespace ST1CP4_KathrinSchey
             Console.WriteLine($"Hi {name}, we are glad to show you the details of your order:");
             Console.WriteLine($"Your pizza: {typPizza}, pizza size: {printSize}, your choosen drink: {chooseDrink}");
             Console.WriteLine($"The method to pay you wish is: {pay}");
+            Console.WriteLine($"The delivery time is: {timeDelivery}");
             Console.WriteLine($"The adress you us give is: \n");
             Console.WriteLine($"Street: {street} \nHousenumber: {housNumber}");
             Console.WriteLine($"plz: {plz}, city: {place}");

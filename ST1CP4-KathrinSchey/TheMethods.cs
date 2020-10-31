@@ -13,30 +13,49 @@ namespace ST1CP4_KathrinSchey
         // use on lines 58, 71, 90
         public string TypeOfPizza(string pizza)  
         {
+            Regex regex = new Regex(@"^\d+$");
 
             Console.WriteLine("1- magherita | 2- quattro formaggi | 3- tonno | 4- diavolo | 5- romana");
-            pizza = Console.ReadLine();
 
-            switch (pizza)
+            try
             {
-                case "1":                    
-                    pizza = "Margherita";
-                    break;
-                case "2":
-                    pizza = "quattro formaggi";
-                    break;
-                case "3":
-                    pizza = "tonno";
-                    break;
-                case "4":
-                    pizza = "diavolo";
-                    break;
-                case "5":
-                    pizza = "romana";
-                    break;
-                default:
-                    pizza = "no pizza...";
-                    break;
+                pizza = Console.ReadLine();
+
+                if (regex.IsMatch(pizza))
+                {
+                    var newPizza = Int32.Parse(pizza);
+                    if (newPizza < 1 || newPizza > 5) throw new Exception("we have only the five pizzen...");
+                }
+                else
+                {
+                    throw new Exception("You entered a string. not a number.");
+                }
+
+                switch (pizza)
+                {
+                    case "1":
+                        pizza = "Margherita";
+                        break;
+                    case "2":
+                        pizza = "quattro formaggi";
+                        break;
+                    case "3":
+                        pizza = "tonno";
+                        break;
+                    case "4":
+                        pizza = "diavolo";
+                        break;
+                    case "5":
+                        pizza = "romana";
+                        break;
+                    default:
+                        pizza = "something goes wrong";
+                        break;
+                }
+
+            } catch(Exception info)
+            {
+                Console.WriteLine(info);
             }
             return pizza;
         }
@@ -46,13 +65,13 @@ namespace ST1CP4_KathrinSchey
         {
             Regex regex = new Regex(@"^\d+$");
 
+            Console.WriteLine("What drink you whana choose?");
+
+            Drinks();
+
             try
             {
-                Console.WriteLine("What drink you whana choose?");
-
-                Drinks();
-
-                choosenDrink = Console.ReadLine(); // <---- chooseDrink = global variable
+                choosenDrink = Console.ReadLine();
 
                 if (regex.IsMatch(choosenDrink))
                 {
@@ -63,22 +82,20 @@ namespace ST1CP4_KathrinSchey
                 {
                     throw new Exception("What u entered is a string, not a number, try again");                    
                 }
+
+                if (choosenDrink == "1")
+                    choosenDrink = "juce";
+                else if (choosenDrink == "2")
+                    choosenDrink = "cola";
+                else 
+                    choosenDrink = "beer";
+                
             }
             catch (Exception info)
             {
                 Console.WriteLine(info);
             }
-
-            if (choosenDrink == "1")
-                choosenDrink = "juce";
-            else if (choosenDrink == "2")
-                choosenDrink = "cola";
-            else if (choosenDrink == "3")
-                choosenDrink = "beer";
-            else
-            {
-                choosenDrink = "nothing to drink";
-            }
+            
             return choosenDrink;
         }
 
@@ -91,38 +108,78 @@ namespace ST1CP4_KathrinSchey
             {
                 Console.Write(drinks[i] + " ");
             }
+
+
            
         }
 
         //  use on line 113 in the programm.cs
         public string WhatTime(string delivery)  
         {
+            Regex regex = new Regex(@"^\d+$");
+
             Console.WriteLine("at what time shoud it be delivered?");
             Console.WriteLine("1 hour | 2 hour | asap! i am very hungry... (just enter 1,2 or 3)");
-            delivery = Console.ReadLine();
+            try
+            {
+                delivery = Console.ReadLine();
+
+                if (regex.IsMatch(delivery))
+                {
+                    var newDelivery = Int32.Parse(delivery);
+                    if (newDelivery < 1 || newDelivery > 3) throw new Exception("we have not more options. sorry");
+                } else
+                {
+                    Console.WriteLine("you entered a string");
+                }
+
+                if (delivery == "1")
+                    delivery = "1 hour";
+                else if (delivery == "2")
+                    delivery = "2 hour";
+                else
+                    delivery = "so fast we can";
+
+            } catch(Exception info)
+            {
+                Console.WriteLine(info);
+            }
+           
             return delivery;
         }
 
         // for the pay methods. use on line 122 in the programm.cs
         public string PaymentSystem(string choosePay) 
         {
+            Regex regex = new Regex(@"^\d+$");
 
             Console.WriteLine("What payment method do you prefere?");
             Console.WriteLine("1- cash | 2- creditCard | 3- PayPall | 4- Bitcoin");
-
-            choosePay = Console.ReadLine();  // <---- pay = global variable
-
-            if (choosePay == "1")
-                choosePay = "cash";
-            else if (choosePay == "2")
-                choosePay = "credit card";
-            else if (choosePay == "3")
-                choosePay = "PayPall";
-            else if (choosePay == "4")
-                choosePay = "BitCoin";
-            else
+            try
             {
-                choosePay = "cash";
+                choosePay = Console.ReadLine();
+
+                if (regex.IsMatch(choosePay))
+                {
+                    var newPay = Int32.Parse(choosePay);
+                    if (newPay < 1 || newPay > 4) throw new Exception("We have only this 4 methods");
+                } else
+                {
+                    Console.WriteLine("You entered a string. Not a number");
+                }
+
+                if (choosePay == "1")
+                    choosePay = "cash";
+                else if (choosePay == "2")
+                    choosePay = "credit card";
+                else if (choosePay == "3")
+                    choosePay = "PayPall";
+                else 
+                    choosePay = "BitCoin";               
+
+            } catch(Exception info)
+            {
+                Console.WriteLine(info);
             }
 
             return choosePay;

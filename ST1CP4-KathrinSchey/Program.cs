@@ -24,7 +24,10 @@ namespace ST1CP4_KathrinSchey
         }
        
         static void Main(string[] args)
-        { 
+        {
+            // bring the class "TheMethods" in, to use it later in the code
+            TheMethods objTheMethods = new TheMethods();
+
             // hello part :) 
             Console.WriteLine("Hi! Whats your name? (or exit)");            
             string name = Console.ReadLine();
@@ -50,10 +53,8 @@ namespace ST1CP4_KathrinSchey
                 if (express == 1) // <--- express delivery "yes"
                 {
                     Console.WriteLine("What type of pizza woud you like?");
-                    TheMethods objTypPizza = new TheMethods();
-                    typPizza = objTypPizza.TypeOfPizza("pizzaTyp");  // <---- call the method "TypOfPizza" (is in TheMethod class. start: line 14)
-                    
- // and save it in the global variable "typPizza" 
+                    // call the method "TypOfPizza" (is in TheMethod class. start: line 14)
+                    typPizza = objTheMethods.TypeOfPizza("pizzaTyp"); 
 
                 } else  //  <--- no hurry 
                 {
@@ -63,8 +64,8 @@ namespace ST1CP4_KathrinSchey
                     if (orderFood == 1) // Will Bestellen aber nicht express
                     {
                         Console.WriteLine("What type of pizza woud you like?");
-                        TheMethods objTypPizza = new TheMethods();
-                        typPizza = objTypPizza.TypeOfPizza("pizzaTyp"); // <---- call the method "TypOfPizza" (is in TheMethod class. start: line 14)
+                        // call the method "TypOfPizza" (is in TheMethod class. start: line 14)
+                        typPizza = objTheMethods.TypeOfPizza("pizzaTyp");
                     }
                     else // <--- user wont order. exit
                     {
@@ -82,8 +83,8 @@ namespace ST1CP4_KathrinSchey
                 if (orderFood == 1)
                 {
                     Console.WriteLine("What type of pizza woud you like?");
-                    TheMethods objTypPizza = new TheMethods();
-                    typPizza = objTypPizza.TypeOfPizza("pizzaTyp");  // <---- call the method "TypOfPizza" (is in TheMethod class. start: line 14)
+                    //  call the method "TypOfPizza" (is in TheMethod class. start: line 14)
+                    typPizza = objTheMethods.TypeOfPizza("pizzaTyp");  
                 }
                 else
                 {   //  user wont order. exit
@@ -106,20 +107,20 @@ namespace ST1CP4_KathrinSchey
             if (askDrink == 1) // <--- if drink no
             {
                 chooseDrink = "no Drink";
-                TheMethods objWhatTime = new TheMethods();
-                timeDelivery = objWhatTime.WhatTime("deliveryTime"); // <--- call the method "WhatTime"(is in TheMethod class. start: line 78)
+                // call the method "WhatTime"(is in TheMethod class. start: line 78)
+                timeDelivery = objTheMethods.WhatTime("deliveryTime"); 
 
             } else  // <--- if drink yes
             {
-                TheMethods objChoosenDrinks = new TheMethods();                
-                chooseDrink = objChoosenDrinks.ChooseDrinks("theDrink"); // <--- call the method "ChooseDrinks"(is in TheMethod class. start: line 44)
+                // call the method "ChooseDrinks"(is in TheMethod class. start: line 44)              
+                chooseDrink = objTheMethods.ChooseDrinks("theDrink");
 
-                TheMethods objWhatTime = new TheMethods();
-                timeDelivery = objWhatTime.WhatTime("deliveryTime"); // <--- call the method "WhatTime"(is in TheMethod class. start: line 78)
+                // call the method "WhatTime"(is in TheMethod class. start: line 78)
+                timeDelivery = objTheMethods.WhatTime("deliveryTime"); 
             }
 
-            TheMethods objPay = new TheMethods();
-            pay = objPay.PaymentSystem("thePayment"); // <--- call the method "PaymentSystem"(is in TheMethod class. start: line 86)
+            // call the method "PaymentSystem"(is in TheMethod class. start: line 86)
+            pay = objTheMethods.PaymentSystem("thePayment"); 
 
             // start with the personal question
             if(name == "Mr. sirius")
